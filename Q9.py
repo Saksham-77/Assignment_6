@@ -1,13 +1,17 @@
-class py_solution:
-   def is_valid_parenthese(self, str1):
-        stack, pchar = [], {"(": ")", "{": "}", "[": "]"}
-        for parenthese in str1:
-            if parenthese in pchar:
-                stack.append(parenthese)
-            elif len(stack) == 0 or pchar[stack.pop()] != parenthese:
+crct, lst = ["()", "[]", "{}"], []
+class validity():
+    def is_valid_parenthese(self, entr):
+        i = 0
+        while len(entr) > i:
+            x = entr[i:i+2]
+            lst.append(x)
+            i += 2
+        for _ in lst:
+            if _ not in crct:
                 return False
-        return len(stack) == 0
-
-print(py_solution().is_valid_parenthese("(){}[]"))
-print(py_solution().is_valid_parenthese("()[{)}"))
-print(py_solution().is_valid_parenthese("()"))
+        else:
+            return True
+print(validity().is_valid_parenthese("()[]{}"))
+print(validity().is_valid_parenthese("[)"))
+print(validity().is_valid_parenthese("({[)]"))
+print(validity().is_valid_parenthese("{{{"))
